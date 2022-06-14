@@ -1,0 +1,1 @@
+The goal of this project is to do a post-it manager using Vue.js.
