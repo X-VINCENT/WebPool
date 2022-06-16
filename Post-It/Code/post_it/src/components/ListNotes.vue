@@ -17,9 +17,23 @@
       </ul>
     </div>
     <div class="add-post-it">
-      <button class="btn btn-add" @click="addNote">
-        <i class="fas fa-plus"></i>
-      </button>
+      <form @submit.prevent="addNote">
+        <input
+          type="text"
+          v-model="title"
+          id="post-it-title"
+          placeholder="Title"
+        />
+        <input
+          type="text"
+          v-model="description"
+          id="post-it-description"
+          placeholder="Description"
+        />
+        <button type="submit" class="btn btn-add">
+          <i class="fas fa-plus"></i>
+        </button>
+      </form>
     </div>
   </div>
 </template>
@@ -38,7 +52,15 @@ export default {
   },
   methods: {
     addNote() {
-      this.Notes.push({ title: "Learn Vue.js", description: "test" });
+      let note = {
+        title: this.title,
+        description: this.description,
+      };
+
+      if (note.title != "" && note.description != "") this.Notes.push(note);
+
+      this.title = "";
+      this.description = "";
     },
     removeNote(index) {
       this.Notes.pop(index);
