@@ -1,6 +1,6 @@
 <template>
   <div id="main-div">
-    <div id=" all_post_its">
+    <div id="list">
       <ul>
         <li class="post-it">
           <h1>My first post-it title</h1>
@@ -63,7 +63,7 @@
 
 <script>
 export default {
-  name: "AllPostIt",
+  name: "ListNotes",
   props: {
     msg: String,
   },
@@ -87,6 +87,7 @@ ul {
   background-color: #161f28;
   list-style-type: none;
   border-radius: 40px;
+  box-shadow: 0 10px 5px #24292f;
 
   & > h1 {
     padding-top: 10%;

@@ -1,17 +1,17 @@
 <template>
   <div>
-    <AllPostIt />
+    <SelfNote />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import AllPostIt from "@/components/AllPostIt.vue";
+import SelfNote from "@/components/SelfNote.vue";
 
 export default {
-  name: "AllPostItView",
+  name: "SelfNoteView",
   components: {
-    AllPostIt,
+    SelfNote,
   },
 };
 </script>

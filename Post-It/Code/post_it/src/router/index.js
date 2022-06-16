@@ -1,11 +1,17 @@
 import { createRouter, createWebHistory } from "vue-router";
-import AllPostItView from "../views/AllPostItView.vue";
+import ListNotesView from "../views/ListNotesView.vue";
+import SelfNoteView from "../views/SelfNoteView.vue";
 
 const routes = [
   {
     path: "/",
-    name: "all_post_it",
-    component: AllPostItView,
+    name: "list_notes",
+    component: ListNotesView,
+  },
+  {
+    path: "/note",
+    name: "self_note",
+    component: SelfNoteView,
   },
 ];
 
