@@ -2,14 +2,14 @@
   <div id="main-div">
     <div id="list">
       <ul>
-        <li class="post-it" v-for="note in Notes" :key="note.title">
+        <li class="post-it" v-for="(note, index) in Notes" :key="note.title">
           <h1>{{ note.title }}</h1>
           <p>{{ note.description }}</p>
           <div class="btn-container">
             <button class="btn btn-open">
               <i class="fas fa-ellipsis-h"></i>
             </button>
-            <button class="btn btn-delete">
+            <button class="btn btn-delete" @click="removeNote(index)">
               <i class="fas fa-trash"></i>
             </button>
           </div>
@@ -17,7 +17,7 @@
       </ul>
     </div>
     <div class="add-post-it">
-      <button class="btn btn-add">
+      <button class="btn btn-add" @click="addNote">
         <i class="fas fa-plus"></i>
       </button>
     </div>
@@ -35,6 +35,14 @@ export default {
         { title: "Learn Nuxt.js", description: "You have to learn Nuxt.js." },
       ],
     };
+  },
+  methods: {
+    addNote() {
+      this.Notes.push({ title: "Learn Vue.js", description: "test" });
+    },
+    removeNote(index) {
+      this.Notes.pop(index);
+    },
   },
 };
 </script>
