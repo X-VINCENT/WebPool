@@ -57,7 +57,7 @@ export default {
         description: this.description,
       };
 
-      if (note.title != "" && note.description != "") this.Notes.push(note);
+      if (this.title != "" && this.description != "") this.Notes.push(note);
 
       this.title = "";
       this.description = "";
@@ -92,7 +92,14 @@ ul {
     padding-top: 10%;
     padding-right: 0%;
     padding-bottom: 0%;
-    padding-left: 0%;
+    padding-left: 20px;
+    height: 40px;
+    width: 360px;
+    max-height: 40px;
+    max-width: 360px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   & > p {
