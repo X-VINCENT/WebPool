@@ -2,46 +2,9 @@
   <div id="main-div">
     <div id="list">
       <ul>
-        <li class="post-it">
-          <h1>My first post-it title</h1>
-          <p>This is a description.</p>
-          <div class="btn-container">
-            <button class="btn btn-open">
-              <i class="fas fa-ellipsis-h"></i>
-            </button>
-            <button class="btn btn-delete">
-              <i class="fas fa-trash"></i>
-            </button>
-          </div>
-        </li>
-        <li class="post-it">
-          <h1>My second post-it title</h1>
-          <p>
-            This is a description This is a description This is a description
-            This is a description This is a description This is a description
-            This is a description This is a description This is a description
-            This is a description This is a description This is a description
-            This is a description This is a description This is a description
-            This is a description This is a description This is a description
-            This is a description This is a description This is a description
-            This is a description This is a description This is a description
-            This is a description This is a description This is a description
-            This is a description This is a description This is a description
-            This is a description This is a description This is a description
-            This is a description This is a description This is a description.
-          </p>
-          <div class="btn-container">
-            <button class="btn btn-open">
-              <i class="fas fa-ellipsis-h"></i>
-            </button>
-            <button class="btn btn-delete">
-              <i class="fas fa-trash"></i>
-            </button>
-          </div>
-        </li>
-        <li class="post-it">
-          <h1>My third post-it title</h1>
-          <p>This is a description.</p>
+        <li class="post-it" v-for="note in Notes" :key="note.title">
+          <h1>{{ note.title }}</h1>
+          <p>{{ note.description }}</p>
           <div class="btn-container">
             <button class="btn btn-open">
               <i class="fas fa-ellipsis-h"></i>
@@ -64,8 +27,14 @@
 <script>
 export default {
   name: "ListNotes",
-  props: {
-    msg: String,
+  data() {
+    return {
+      Notes: [
+        { title: "Learn Vue.js", description: "You have to learn Vue.js." },
+        { title: "Learn React.js", description: "You have to learn React.js." },
+        { title: "Learn Nuxt.js", description: "You have to learn Nuxt.js." },
+      ],
+    };
   },
 };
 </script>
