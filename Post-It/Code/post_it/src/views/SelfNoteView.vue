@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SelfNote />
+    <SelfNote :id="$route.params.id" />
   </div>
 </template>
 

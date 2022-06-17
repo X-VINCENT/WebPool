@@ -1,11 +1,17 @@
 <template>
   <div>
-    <div class="note-div">
-      <h1>My second post-it title</h1>
-      <p>This is a description</p>
+    <div class="note-div" v-if="Notes[id]">
+      <h1>{{ Notes[id].title }}</h1>
+      <p>{{ Notes[id].description }}</p>
+    </div>
+    <div style="padding-bottom: 20px" v-else>
+      <h1 id="">
+        No post-it <br />
+        Verify index
+      </h1>
     </div>
     <div class="btn-container">
-      <button class="btn btn-back">
+      <button class="btn btn-back" @click="goToList()">
         <i class="fas fa-arrow-left">
           <span>Back to all post-it</span>
         </i>
@@ -15,10 +21,28 @@
 </template>
 
 <script>
+import ListNotes from "@/components/ListNotes.vue";
 export default {
   name: "SelfNote",
   props: {
-    note: String,
+    id: Number,
+  },
+  component: {
+    ListNotes,
+  },
+  methods: {
+    goToList() {
+      this.$router.push("/");
+    },
+  },
+  data() {
+    return {
+      Notes: [
+        { title: "Learn Vue.js", description: "You have to learn Vue.js." },
+        { title: "Learn React.js", description: "You have to learn React.js." },
+        { title: "Learn Nuxt.js", description: "You have to learn Nuxt.js." },
+      ],
+    };
   },
 };
 </script>

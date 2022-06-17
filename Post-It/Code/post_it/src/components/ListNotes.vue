@@ -6,7 +6,7 @@
           <h1>{{ note.title }}</h1>
           <p>{{ note.description }}</p>
           <div class="btn-container">
-            <button class="btn btn-open">
+            <button class="btn btn-open" @click="goToSelfView(index)">
               <i class="fas fa-ellipsis-h"></i>
             </button>
             <button class="btn btn-delete" @click="removeNote(index)">
@@ -17,7 +17,7 @@
       </ul>
     </div>
     <div class="add-post-it">
-      <form @submit.prevent="addNote">
+      <form @submit.prevent="addNote()">
         <div class="half">
           <label>Title</label>
           <input type="text" v-model="title" id="input_title" required />
@@ -42,15 +42,6 @@
 <script>
 export default {
   name: "ListNotes",
-  data() {
-    return {
-      Notes: [
-        { title: "Learn Vue.js", description: "You have to learn Vue.js." },
-        { title: "Learn React.js", description: "You have to learn React.js." },
-        { title: "Learn Nuxt.js", description: "You have to learn Nuxt.js." },
-      ],
-    };
-  },
   methods: {
     addNote() {
       let note = {
@@ -67,6 +58,18 @@ export default {
       console.log(index);
       this.Notes.splice(index, 1);
     },
+    goToSelfView(index) {
+      this.$router.push(`/note/${index}`);
+    },
+  },
+  data() {
+    return {
+      Notes: [
+        { title: "Learn Vue.js", description: "You have to learn Vue.js." },
+        { title: "Learn React.js", description: "You have to learn React.js." },
+        { title: "Learn Nuxt.js", description: "You have to learn Nuxt.js." },
+      ],
+    };
   },
 };
 </script>
