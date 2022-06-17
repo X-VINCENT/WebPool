@@ -2,7 +2,11 @@
   <div>
     <div id="list">
       <ul>
-        <li class="post-it" v-for="(note, index) in Notes" :key="note.title">
+        <li
+          class="post-it"
+          v-for="(note, index) in $store.state.notes"
+          :key="note.title"
+        >
           <h1>{{ note.title }}</h1>
           <p>{{ note.description }}</p>
           <div class="btn-container">
@@ -49,27 +53,18 @@ export default {
         description: this.description,
       };
 
-      if (this.title != "" && this.description != "") this.Notes.push(note);
+      if (this.title != "" && this.description != "")
+        this.$store.dispatch("addNote", note);
 
       this.title = "";
       this.description = "";
     },
     removeNote(index) {
-      console.log(index);
-      this.Notes.splice(index, 1);
+      this.$store.dispatch("removeNote", index);
     },
     goToSelfView(index) {
       this.$router.push(`/note/${index}`);
     },
-  },
-  data() {
-    return {
-      Notes: [
-        { title: "Learn Vue.js", description: "You have to learn Vue.js." },
-        { title: "Learn React.js", description: "You have to learn React.js." },
-        { title: "Learn Nuxt.js", description: "You have to learn Nuxt.js." },
-      ],
-    };
   },
 };
 </script>

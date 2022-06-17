@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="note-div" v-if="Notes[id]">
-      <h1>{{ Notes[id].title }}</h1>
-      <p>{{ Notes[id].description }}</p>
+    <div class="note-div" v-if="$store.state.notes[id]">
+      <h1>{{ $store.state.notes[id].title }}</h1>
+      <p>{{ $store.state.notes[id].description }}</p>
     </div>
     <div style="padding-bottom: 20px" v-else>
       <h1 id="">
@@ -25,7 +25,10 @@ import ListNotes from "@/components/ListNotes.vue";
 export default {
   name: "SelfNote",
   props: {
-    id: Number,
+    id: {
+      type: Number,
+      required: true,
+    },
   },
   component: {
     ListNotes,
@@ -34,15 +37,6 @@ export default {
     goToList() {
       this.$router.push("/");
     },
-  },
-  data() {
-    return {
-      Notes: [
-        { title: "Learn Vue.js", description: "You have to learn Vue.js." },
-        { title: "Learn React.js", description: "You have to learn React.js." },
-        { title: "Learn Nuxt.js", description: "You have to learn Nuxt.js." },
-      ],
-    };
   },
 };
 </script>
