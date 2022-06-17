@@ -18,18 +18,19 @@
     </div>
     <div class="add-post-it">
       <form @submit.prevent="addNote">
-        <input
-          type="text"
-          v-model="title"
-          id="post-it-title"
-          placeholder="Title"
-        />
-        <input
-          type="text"
-          v-model="description"
-          id="post-it-description"
-          placeholder="Description"
-        />
+        <div class="half">
+          <label>Title</label>
+          <input type="text" v-model="title" id="input_title" required />
+        </div>
+        <div class="half">
+          <label>Description</label>
+          <input
+            type="text"
+            v-model="description"
+            id="input_description"
+            required
+          />
+        </div>
         <button type="submit" class="btn btn-add">
           <i class="fas fa-plus"></i>
         </button>
@@ -161,5 +162,45 @@ ul {
   &:hover {
     transform: rotate(360deg);
   }
+}
+
+.add-post-it {
+  border: 3px solid #161f28;
+  border-radius: 40px;
+  margin: 50px;
+  box-shadow: 0 10px 5px #24292f;
+}
+
+.half {
+  padding-top: 20px;
+  align-self: center;
+
+  & > label {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  & > input {
+    display: block;
+    color: white;
+    background-color: #161f28;
+    margin: 5px auto;
+    padding: 5px 10px 5px 10px;
+    border: none;
+    border-radius: 40px;
+    resize: both;
+  }
+}
+
+#input_title {
+  width: 67%;
+  font-size: 24px;
+}
+
+#input_description {
+  width: 73%;
+  height: 100px;
+  font-size: 16px;
+  box-sizing: border-box;
 }
 </style>
