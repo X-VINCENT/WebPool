@@ -9,7 +9,7 @@ const routes = [
     component: ListNotesView,
   },
   {
-    path: "/note",
+    path: "/note/:id",
     name: "self_note",
     component: SelfNoteView,
   },

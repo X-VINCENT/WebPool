@@ -1,5 +1,5 @@
 <template>
-  <div id="main-div">
+  <div>
     <div id="list">
       <ul>
         <li class="post-it" v-for="(note, index) in Notes" :key="note.title">

@@ -1,5 +1,5 @@
 <template>
-  <div id="main-div">
+  <div>
     <div class="note-div">
       <h1>My second post-it title</h1>
       <p>This is a description</p>
@@ -18,7 +18,7 @@
 export default {
   name: "SelfNote",
   props: {
-    msg: String,
+    note: String,
   },
 };
 </script>
