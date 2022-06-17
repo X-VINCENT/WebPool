@@ -63,7 +63,8 @@ export default {
       this.description = "";
     },
     removeNote(index) {
-      this.Notes.pop(index);
+      console.log(index);
+      this.Notes.splice(index, 1);
     },
   },
 };
