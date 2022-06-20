@@ -3,54 +3,94 @@
     <div class="list">
       <h1>Todo</h1>
       <div class="card-box">
-        <div class="card">
-          <h1>Title</h1>
-          <p>Description</p>
-        </div>
-        <div class="card">
-          <h1>Title</h1>
-          <p>Description</p>
-        </div>
-        <div class="card">
-          <h1>Title</h1>
-          <p>Description</p>
-        </div>
-        <div class="card">
-          <h1>Title</h1>
-          <p>Description</p>
-        </div>
-        <div class="card">
-          <h1>Title</h1>
-          <p>Description</p>
-        </div>
-        <div class="card">
-          <h1>Title</h1>
-          <p>Description</p>
+        <div
+          class="card"
+          v-for="todo in todos"
+          :key="todo.id"
+          :style="{ background: randomColor() }"
+        >
+          <h1>{{ todo.title }}</h1>
+          <p>{{ todo.description }}</p>
         </div>
       </div>
     </div>
     <div class="list">
       <h1>In progress</h1>
-      <div class="card">
-        <h1>Title</h1>
-        <p>Description</p>
+      <div class="card-box">
+        <div
+          class="card"
+          v-for="todo in todos"
+          :key="todo.id"
+          :style="{ background: randomColor() }"
+        >
+          <h1>{{ todo.title }}</h1>
+          <p>{{ todo.description }}</p>
+        </div>
       </div>
     </div>
     <div class="list">
       <h1>Done</h1>
-      <div class="card">
-        <h1>Title</h1>
-        <p>Description</p>
+      <div class="card-box">
+        <div
+          class="card"
+          v-for="todo in todos"
+          :key="todo.id"
+          :style="{ background: randomColor() }"
+        >
+          <h1>{{ todo.title }}</h1>
+          <p>{{ todo.description }}</p>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+const Status = {
+  TODO: 0,
+  IN_PROGRESS: 1,
+  DONE: 2,
+};
+
 export default {
   name: "HomeComponent",
-  props: {
-    msg: String,
+  data() {
+    return {
+      todos: [
+        {
+          id: 1,
+          title: "Learn Vue.js",
+          description: "You have to learn Vue.js",
+          status: Status.TODO,
+        },
+        {
+          id: 2,
+          title: "Learn React.js",
+          description: "You have to learn React.js",
+          status: Status.TODO,
+        },
+        {
+          id: 3,
+          title: "Learn Node.js",
+          description: "You have to learn Node.js",
+          status: Status.TODO,
+        },
+        {
+          id: 4,
+          title: "Learn Nuxt.js",
+          description: "You have to learn Nuxt.js",
+          status: Status.TODO,
+        },
+      ],
+    };
+  },
+  mounted() {},
+  methods: {
+    randomColor() {
+      const r = () => Math.floor(256 * Math.random());
+
+      return `rgb(${r()}, ${r()}, ${r()})`;
+    },
   },
 };
 </script>
@@ -123,8 +163,6 @@ export default {
     text-align: left;
 
     width: 320px;
-
-    background: #d93535;
 
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12),
       0px 16px 32px rgba(0, 0, 0, 0.08);
