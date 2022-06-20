@@ -50,4 +50,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 @import "v-calendar/dist/style.css";
+
+.calendar {
+  margin: 24px auto;
+}
 </style>

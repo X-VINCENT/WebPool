@@ -1,12 +1,35 @@
 <template>
+  <button class="btn-navbar" @click="displayNavBar = !displayNavBar">
+    <font-awesome-icon icon="fa-solid fa-bars" />
+  </button>
   <nav>
-    <ul class="nav-bar">
-      <li><router-link to="/">Home</router-link></li>
-      <li><router-link to="/calendar">Calendar</router-link></li>
+    <ul class="nav-bar" v-if="displayNavBar">
+      <li>
+        <router-link to="/">
+          <font-awesome-icon icon="fa-solid fa-home" />
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/calendar">
+          <font-awesome-icon icon="fa-solid fa-calendar-alt" />
+        </router-link>
+      </li>
     </ul>
   </nav>
-  <router-view />
+  <div id="router-container">
+    <router-view />
+  </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      displayNavBar: true,
+    };
+  },
+};
+</script>
 
 <style lang="scss">
 #app {
@@ -17,8 +40,26 @@
   color: #2c3e50;
 }
 
+.btn-navbar {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  border-radius: 25px;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 28px;
+  border: none;
+  margin: -84px auto 0 -45%;
+  padding: 12px 16px;
+  z-index: 101;
+  cursor: pointer;
+}
+
 nav {
-  padding: 30px;
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  margin: -100px auto;
 
   .nav-bar {
     border-radius: 25px;
@@ -29,6 +70,7 @@ nav {
     backdrop-filter: blur(10px);
     align-items: center;
     padding: 0 10px;
+    text-align: center;
 
     li {
       list-style: none;
@@ -75,5 +117,9 @@ nav {
       color: #42b983;
     }
   }
+}
+
+#router-container {
+  margin: 100px auto;
 }
 </style>
