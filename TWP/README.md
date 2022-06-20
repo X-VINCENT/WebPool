@@ -1,0 +1,1 @@
+The goal of this project is to using a Vue.js app with th WordPress API.
