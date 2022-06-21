@@ -7,14 +7,8 @@
           class="card"
           v-for="(todo, id) in $store.state.todos"
           :key="todo.title"
-          :style="{ background: randomColor() }"
         >
-          <h1>{{ todo.title }}</h1>
-          <p>{{ todo.description }}</p>
-          <div class="btn-container">
-            <EditButton :todo="todo" :id="id" />
-            <DeleteButton :id="id" />
-          </div>
+          <card :todo="todo" :id="id" />
         </div>
       </div>
     </div>
@@ -23,12 +17,10 @@
       <div class="card-box">
         <div
           class="card"
-          v-for="todo in todos"
-          :key="todo.id"
-          :style="{ background: randomColor() }"
+          v-for="(todo, id) in $store.state.todos"
+          :key="todo.title"
         >
-          <h1>{{ todo.title }}</h1>
-          <p>{{ todo.description }}</p>
+          <card :todo="todo" :id="id" />
         </div>
       </div>
     </div>
@@ -37,12 +29,10 @@
       <div class="card-box">
         <div
           class="card"
-          v-for="todo in todos"
-          :key="todo.id"
-          :style="{ background: randomColor() }"
+          v-for="(todo, id) in $store.state.todos"
+          :key="todo.title"
         >
-          <h1>{{ todo.title }}</h1>
-          <p>{{ todo.description }}</p>
+          <card :todo="todo" :id="id" />
         </div>
       </div>
     </div>
@@ -50,11 +40,10 @@
 </template>
 
 <script>
-import DeleteButton from "@/components/List/Items/DeleteButton";
-import EditButton from "@/components/List/Items/EditButton";
+import Card from "@/components/List/Items/CardItem";
 
 export default {
-  components: { DeleteButton, EditButton },
+  components: { Card },
   name: "HomeComponent",
   mounted() {},
   methods: {
@@ -144,56 +133,6 @@ export default {
     &::-webkit-scrollbar-thumb {
       background: #2c7d59;
       border-radius: 3px;
-    }
-  }
-
-  .card {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-    text-align: left;
-
-    width: 320px;
-
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12),
-      0px 16px 32px rgba(0, 0, 0, 0.08);
-    border-radius: 8px;
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-
-    & > h1 {
-      width: 272px;
-      height: 24px;
-      margin: 10px 24px;
-
-      font-family: "SF Pro Text";
-      font-style: normal;
-      font-weight: 600;
-      font-size: 20px;
-      line-height: 150%;
-
-      color: #fff;
-    }
-
-    & > p {
-      width: 272px;
-      height: 24px;
-      margin: 10px 24px;
-
-      font-family: "SF Pro Text";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 140%;
-
-      color: rgba(255, 255, 255, 0.75);
-    }
-
-    & > .btn-container {
-      width: 100%;
     }
   }
 }
