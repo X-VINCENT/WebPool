@@ -5,7 +5,7 @@
       <div class="card-box">
         <div
           class="card"
-          v-for="todo in todos"
+          v-for="todo in $store.state.todos"
           :key="todo.id"
           :style="{ background: randomColor() }"
         >
@@ -47,58 +47,11 @@
 </template>
 
 <script>
-import DeleteButton from "@/components/TodoList/TodoItem/TodoDeleteButton";
-const Status = {
-  TODO: 0,
-  IN_PROGRESS: 1,
-  DONE: 2,
-};
+import DeleteButton from "@/components/List/Items/DeleteButton";
 
 export default {
   components: { DeleteButton },
   name: "HomeComponent",
-  data() {
-    return {
-      todos: [
-        {
-          id: 1,
-          title: "Learn Vue.js",
-          description: "You have to learn Vue.js",
-          status: Status.TODO,
-        },
-        {
-          id: 2,
-          title: "Learn React.js",
-          description: "You have to learn React.js",
-          status: Status.TODO,
-        },
-        {
-          id: 3,
-          title: "Learn Node.js",
-          description: "You have to learn Node.js",
-          status: Status.TODO,
-        },
-        {
-          id: 4,
-          title: "Learn Nuxt.js",
-          description: "You have to learn Nuxt.js",
-          status: Status.TODO,
-        },
-        {
-          id: 5,
-          title: "Learn Nuxt.js",
-          description: "You have to learn Nuxt.js",
-          status: Status.TODO,
-        },
-        {
-          id: 6,
-          title: "Learn Nuxt.js",
-          description: "You have to learn Nuxt.js",
-          status: Status.TODO,
-        },
-      ],
-    };
-  },
   mounted() {},
   methods: {
     randomColor() {
