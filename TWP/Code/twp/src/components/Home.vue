@@ -1,7 +1,12 @@
 <template>
   <div class="home">
     <div class="list">
-      <h1>Todo</h1>
+      <div class="header">
+        <h1>Todo</h1>
+        <button>
+          <font-awesome-icon icon="fa-solid fa-plus" />
+        </button>
+      </div>
       <div class="card-box">
         <div
           class="card"
@@ -13,7 +18,12 @@
       </div>
     </div>
     <div class="list">
-      <h1>In progress</h1>
+      <div class="header">
+        <h1>In progress</h1>
+        <button>
+          <font-awesome-icon icon="fa-solid fa-plus" />
+        </button>
+      </div>
       <div class="card-box">
         <div
           class="card"
@@ -25,7 +35,12 @@
       </div>
     </div>
     <div class="list">
-      <h1>Done</h1>
+      <div class="header">
+        <h1>Done</h1>
+        <button>
+          <font-awesome-icon icon="fa-solid fa-plus" />
+        </button>
+      </div>
       <div class="card-box">
         <div
           class="card"
@@ -95,18 +110,40 @@ export default {
   border-color: #4a5568;
   border-radius: 16px;
 
-  & > h1 {
-    width: 320px;
-    height: 44px;
-    font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen,
-      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Helvetica, Arial,
-      sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 28px;
-    line-height: 200%;
+  & > .header {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
 
-    color: #fff;
+    & > h1 {
+      position: relative;
+      width: 280px;
+      height: 44px;
+      font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen,
+        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Helvetica,
+        Arial, sans-serif;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 150%;
+      margin: 24px auto;
+
+      color: #fff;
+    }
+
+    & > button {
+      position: absolute;
+      left: 80%;
+      background-color: rgba(0, 0, 0, 0);
+      color: #fff;
+      border-radius: 25px;
+      font-family: sans-serif;
+      font-weight: bold;
+      font-size: 28px;
+      border: none;
+      cursor: pointer;
+    }
   }
 
   .card-box {

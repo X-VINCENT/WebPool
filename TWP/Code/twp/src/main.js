@@ -10,6 +10,7 @@ import {
   faCalendarAlt,
   faPenAlt,
   faTrashAlt,
+  faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import VCalendar from "v-calendar";
 
@@ -19,6 +20,7 @@ library.add({
   faCalendarAlt,
   faPenAlt,
   faTrashAlt,
+  faPlus,
 });
 
 createApp(App)
