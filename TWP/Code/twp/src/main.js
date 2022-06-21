@@ -8,10 +8,18 @@ import {
   faBars,
   faHome,
   faCalendarAlt,
+  faPenAlt,
+  faTrashAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import VCalendar from "v-calendar";
 
-library.add({ faBars, faHome, faCalendarAlt });
+library.add({
+  faBars,
+  faHome,
+  faCalendarAlt,
+  faPenAlt,
+  faTrashAlt,
+});
 
 createApp(App)
   .use(store)

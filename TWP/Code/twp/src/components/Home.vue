@@ -11,6 +11,7 @@
         >
           <h1>{{ todo.title }}</h1>
           <p>{{ todo.description }}</p>
+          <DeleteButton :id="todo.id" />
         </div>
       </div>
     </div>
@@ -46,6 +47,7 @@
 </template>
 
 <script>
+import DeleteButton from "@/components/TodoList/TodoItem/TodoDeleteButton";
 const Status = {
   TODO: 0,
   IN_PROGRESS: 1,
@@ -53,6 +55,7 @@ const Status = {
 };
 
 export default {
+  components: { DeleteButton },
   name: "HomeComponent",
   data() {
     return {
@@ -81,6 +84,18 @@ export default {
           description: "You have to learn Nuxt.js",
           status: Status.TODO,
         },
+        {
+          id: 5,
+          title: "Learn Nuxt.js",
+          description: "You have to learn Nuxt.js",
+          status: Status.TODO,
+        },
+        {
+          id: 6,
+          title: "Learn Nuxt.js",
+          description: "You have to learn Nuxt.js",
+          status: Status.TODO,
+        },
       ],
     };
   },
@@ -97,6 +112,26 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+.home {
+  display: grid;
+  column-gap: 50px;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+  align-items: center;
+}
+
+@media screen and (max-width: 1280px) {
+  .home {
+    grid-template-columns: auto auto;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .home {
+    grid-template-columns: auto;
+  }
+}
+
 .list {
   display: flex;
   flex-direction: column;
