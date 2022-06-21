@@ -4,37 +4,31 @@ export default createStore({
   state: {
     todos: [
       {
-        id: 1,
         title: "Learn Vue.js",
         description: "You have to learn Vue.js",
         status: 1,
       },
       {
-        id: 2,
         title: "Learn React.js",
         description: "You have to learn React.js",
         status: 1,
       },
       {
-        id: 3,
         title: "Learn Node.js",
         description: "You have to learn Node.js",
         status: 1,
       },
       {
-        id: 4,
         title: "Learn Nuxt.js",
         description: "You have to learn Nuxt.js",
         status: 0,
       },
       {
-        id: 5,
         title: "Learn HTML",
         description: "You have to learn HTML",
         status: 2,
       },
       {
-        id: 6,
         title: "Learn CSS",
         description: "You have to learn CSS",
         status: 2,
@@ -43,6 +37,10 @@ export default createStore({
   },
   getters: {},
   mutations: {},
-  actions: {},
+  actions: {
+    deleteTodo(context, payload) {
+      context.state.todos.splice(payload, 1);
+    },
+  },
   modules: {},
 });

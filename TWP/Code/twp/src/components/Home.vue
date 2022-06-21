@@ -5,13 +5,16 @@
       <div class="card-box">
         <div
           class="card"
-          v-for="todo in $store.state.todos"
-          :key="todo.id"
+          v-for="(todo, id) in $store.state.todos"
+          :key="todo.title"
           :style="{ background: randomColor() }"
         >
           <h1>{{ todo.title }}</h1>
           <p>{{ todo.description }}</p>
-          <DeleteButton :id="todo.id" />
+          <div class="btn-container">
+            <EditButton :todo="todo" :id="id" />
+            <DeleteButton :id="id" />
+          </div>
         </div>
       </div>
     </div>
@@ -48,9 +51,10 @@
 
 <script>
 import DeleteButton from "@/components/List/Items/DeleteButton";
+import EditButton from "@/components/List/Items/EditButton";
 
 export default {
-  components: { DeleteButton },
+  components: { DeleteButton, EditButton },
   name: "HomeComponent",
   mounted() {},
   methods: {
@@ -176,7 +180,7 @@ export default {
 
     & > p {
       width: 272px;
-      height: 40px;
+      height: 24px;
       margin: 10px 24px;
 
       font-family: "SF Pro Text";
@@ -186,6 +190,10 @@ export default {
       line-height: 140%;
 
       color: rgba(255, 255, 255, 0.75);
+    }
+
+    & > .btn-container {
+      width: 100%;
     }
   }
 }

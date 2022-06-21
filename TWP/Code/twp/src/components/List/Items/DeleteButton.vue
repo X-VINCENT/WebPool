@@ -1,5 +1,5 @@
 <template>
-  <button class="btn" @click="deleteTodo()">
+  <button class="btn" @click="deleteTodo(id)">
     <font-awesome-icon icon="fa-solid fa-trash-alt" />
   </button>
 </template>
@@ -14,7 +14,9 @@ export default {
     },
   },
   methods: {
-    deleteTodo() {},
+    deleteTodo(id) {
+      this.$store.dispatch("deleteTodo", id);
+    },
   },
 };
 </script>
@@ -24,13 +26,13 @@ export default {
   position: relative;
   background-color: rgba(0, 0, 0, 0);
   color: #fff;
-  left: 80%;
+  left: 70%;
   border-radius: 25px;
   font-family: sans-serif;
   font-weight: bold;
   font-size: 14px;
   border: none;
-  padding: 12px 16px;
+  padding: 16px;
   cursor: pointer;
 }
 </style>
