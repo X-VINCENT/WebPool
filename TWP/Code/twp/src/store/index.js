@@ -7,7 +7,7 @@ export default createStore({
         title: "Learn Vue.js",
         description: "You have to learn Vue.js",
         status: 1,
-        color: "#000000",
+        color: "#32a852",
       },
       {
         title: "Learn React.js",

@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import Card from "@/components/List/Items/CardItem";
+import Card from "@/components/List/Card/CardItem";
 
 export default {
   components: { Card },

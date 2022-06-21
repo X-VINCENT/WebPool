@@ -15,10 +15,10 @@
 </template>
 
 <script>
-import DeleteButton from "@/components/List/Items/DeleteButton";
-import EditButton from "@/components/List/Items/EditButton";
-import CardTitle from "@/components/List/Items/CardTitle";
-import CardDescription from "@/components/List/Items/CardDescription";
+import DeleteButton from "@/components/List/Card/DeleteButton";
+import EditButton from "@/components/List/Card/EditButton";
+import CardTitle from "@/components/List/Card/CardTitle";
+import CardDescription from "@/components/List/Card/CardDescription";
 
 export default {
   components: { DeleteButton, EditButton, CardTitle, CardDescription },
