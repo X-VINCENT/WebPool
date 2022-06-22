@@ -7,11 +7,7 @@
       </button>
     </div>
     <div class="card-box">
-      <div
-        class="card"
-        v-for="(todo, id) in $store.state.todos"
-        :key="todo.title"
-      >
+      <div class="card" v-for="(todo, id) in todos" :key="todo.title">
         <card :todo="todo" :id="id" />
       </div>
     </div>
@@ -32,6 +28,11 @@ export default {
     status: {
       type: Number,
       required: true,
+    },
+  },
+  computed: {
+    todos() {
+      return this.$store.state.todos;
     },
   },
 };
