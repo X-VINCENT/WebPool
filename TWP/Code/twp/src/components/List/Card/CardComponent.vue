@@ -15,12 +15,13 @@
 </template>
 
 <script>
-import DeleteButton from "@/components/List/Card/DeleteButton";
-import EditButton from "@/components/List/Card/EditButton";
-import CardTitle from "@/components/List/Card/CardTitle";
-import CardDescription from "@/components/List/Card/CardDescription";
+import DeleteButton from "@/components/List/Card/DeleteButton.vue";
+import EditButton from "@/components/List/Card/EditButton.vue";
+import CardTitle from "@/components/List/Card/CardTitle.vue";
+import CardDescription from "@/components/List/Card/CardDescription.vue";
 
 export default {
+  name: "CardItem",
   components: { DeleteButton, EditButton, CardTitle, CardDescription },
   props: {
     todo: {
