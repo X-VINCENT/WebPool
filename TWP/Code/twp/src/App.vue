@@ -3,7 +3,7 @@
     <font-awesome-icon icon="fa-solid fa-bars" />
   </button>
   <nav>
-    <ul class="nav-bar" v-if="displayNavBar">
+    <ul class="nav-bar" v-show="displayNavBar">
       <li>
         <router-link to="/">
           <font-awesome-icon icon="fa-solid fa-home" />
@@ -60,6 +60,9 @@ nav {
   z-index: 100;
   width: 100%;
   margin: -100px auto;
+
+  animation-duration: 2s;
+  animation-name: animate;
 
   .nav-bar {
     border-radius: 25px;
@@ -121,5 +124,16 @@ nav {
 
 #router-container {
   margin: 100px auto;
+}
+
+@keyframes animate {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
 }
 </style>

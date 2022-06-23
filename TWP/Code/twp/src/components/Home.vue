@@ -31,7 +31,7 @@ export default {
   }
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 900px) {
   .home {
     grid-template-columns: auto;
   }

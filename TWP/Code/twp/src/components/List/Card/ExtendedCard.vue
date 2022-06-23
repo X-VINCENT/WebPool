@@ -4,7 +4,9 @@
     :style="{
       background: todo.color,
     }"
-  ></div>
+  >
+    <p>Hello</p>
+  </div>
 </template>
 
 <script>
@@ -15,10 +17,6 @@ export default {
       type: Object,
       required: false,
     },
-    id: {
-      type: Number,
-      required: false,
-    },
   },
   methods: {},
 };
@@ -27,12 +25,14 @@ export default {
 <style lang="scss" scoped>
 .card {
   position: fixed;
-  left: 25%;
-  right: 0;
   top: 0;
+  left: 0;
+  right: 0;
   bottom: 0;
-  z-index: 20;
-  max-width: 500px;
-  width: 100%;
+  z-index: 99;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>

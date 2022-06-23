@@ -63,6 +63,9 @@ export default {
   border-color: #4a5568;
   border-radius: 16px;
 
+  animation-duration: 2s;
+  animation-name: animate;
+
   & > .header {
     display: flex;
     width: 100%;
@@ -124,6 +127,17 @@ export default {
       background: #2c7d59;
       border-radius: 3px;
     }
+  }
+}
+
+@keyframes animate {
+  0% {
+    opacity: 0;
+    transform: translate(0, 200px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
   }
 }
 </style>

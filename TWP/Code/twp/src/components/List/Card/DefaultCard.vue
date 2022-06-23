@@ -5,13 +5,25 @@
       background: todo.color,
     }"
   >
-    <h1>{{ todo.title }}</h1>
-    <p>{{ todo.description }}</p>
+    <h1 :style="{ color: getColorByBgColor(todo.color) }">
+      {{ todo.title }}
+    </h1>
+    <p :style="{ color: getColorByBgColor(todo.color) }">
+      {{ todo.description }}
+    </p>
     <div class="btn-container">
-      <button class="btn" @click="isEditing = !isEditing">
+      <button
+        class="btn"
+        :style="{ color: getColorByBgColor(todo.color) }"
+        @click="deleteTodo(todo.id)"
+      >
         <font-awesome-icon icon="fa-solid fa-pen-alt" />
       </button>
-      <button class="btn" @click="deleteTodo(todo.id)">
+      <button
+        class="btn"
+        :style="{ color: getColorByBgColor(todo.color) }"
+        @click="deleteTodo(todo.id)"
+      >
         <font-awesome-icon icon="fa-solid fa-trash-alt" />
       </button>
     </div>
@@ -33,6 +45,14 @@ export default {
     };
   },
   methods: {
+    getColorByBgColor(bgColor) {
+      if (!bgColor) {
+        return "";
+      }
+      return parseInt(bgColor.replace("#", ""), 16) > 0xffffff / 2
+        ? "#000000"
+        : "#ffffff";
+    },
     deleteTodo(id) {
       this.$store.dispatch("deleteTodo", id);
     },
@@ -56,6 +76,9 @@ export default {
   flex: none;
   order: 0;
   flex-grow: 0;
+
+  animation-duration: 2s;
+  animation-name: animate;
 
   & > h1 {
     width: 272px;
@@ -101,6 +124,17 @@ export default {
       padding: 16px;
       cursor: pointer;
     }
+  }
+}
+
+@keyframes animate {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
   }
 }
 </style>
