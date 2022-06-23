@@ -7,7 +7,7 @@
       </button>
     </div>
     <div class="card-box">
-      <div class="card" v-for="(todo, id) in todos" :key="todo.title">
+      <div class="card" v-for="(todo, id) in filteredTodos" :key="todo.title">
         <card :todo="todo" :id="id" />
       </div>
     </div>
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import Card from "@/components/List/Card/CardComponent.vue";
+import Card from "@/components/List/Card/DefaultCard.vue";
 
 export default {
   name: "ListComponent",
@@ -33,6 +33,11 @@ export default {
   computed: {
     todos() {
       return this.$store.state.todos;
+    },
+    filteredTodos() {
+      return this.$store.state.todos.filter(
+        (todo) => todo.status == this.$props.status
+      );
     },
   },
 };

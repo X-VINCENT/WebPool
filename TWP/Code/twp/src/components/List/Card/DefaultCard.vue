@@ -1,0 +1,114 @@
+<template>
+  <div
+    class="card"
+    :style="{
+      background: todo.color,
+    }"
+  >
+    <h1>{{ todo.title }}</h1>
+    <p>{{ todo.description }}</p>
+    <div class="btn-container">
+      <button class="btn" @click="isEditing = !isEditing">
+        <font-awesome-icon icon="fa-solid fa-pen-alt" />
+      </button>
+      <button class="btn" @click="deleteTodo(id)">
+        <font-awesome-icon icon="fa-solid fa-trash-alt" />
+      </button>
+    </div>
+  </div>
+  <extended-card v-show="isEditing" :todo="todo" :id="todo.id" />
+</template>
+
+<script>
+import ExtendedCard from "@/components/List/Card/ExtendedCard.vue";
+
+export default {
+  name: "DefaultCard",
+  components: { ExtendedCard },
+  props: {
+    todo: {
+      type: Object,
+      required: true,
+    },
+    id: {
+      type: Number,
+      required: true,
+    },
+  },
+  data() {
+    return {
+      isEditing: false,
+    };
+  },
+  methods: {
+    deleteTodo(id) {
+      this.$store.dispatch("deleteTodo", id);
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  text-align: left;
+
+  width: 320px;
+
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12), 0px 16px 32px rgba(0, 0, 0, 0.08);
+  border-radius: 28px;
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+
+  & > h1 {
+    width: 272px;
+    height: 24px;
+    margin: 10px 24px;
+
+    font-family: "SF Pro Text";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 150%;
+
+    color: #fff;
+  }
+
+  & > p {
+    width: 272px;
+    height: 24px;
+    margin: 10px 24px;
+
+    font-family: "SF Pro Text";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  & > .btn-container {
+    width: 100%;
+
+    & > .btn {
+      position: relative;
+      background-color: rgba(0, 0, 0, 0);
+      color: #fff;
+      left: 70%;
+      border-radius: 25px;
+      font-family: sans-serif;
+      font-weight: bold;
+      font-size: 14px;
+      border: none;
+      padding: 16px;
+      cursor: pointer;
+    }
+  }
+}
+</style>

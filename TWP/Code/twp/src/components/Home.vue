@@ -10,10 +10,8 @@
 import ListComponent from "@/components/List/ListComponent.vue";
 
 export default {
-  components: { ListComponent },
   name: "HomeComponent",
-  mounted() {},
-  methods: {},
+  components: { ListComponent },
 };
 </script>
 

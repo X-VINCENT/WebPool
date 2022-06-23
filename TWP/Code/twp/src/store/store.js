@@ -4,7 +4,7 @@ import { mutations } from "./mutations";
 import { actions } from "./actions";
 import { modules } from "./modules";
 
-const todos = require("./todos.json");
+const todos = require("./data/todos.json");
 
 export default createStore({
   state: {
