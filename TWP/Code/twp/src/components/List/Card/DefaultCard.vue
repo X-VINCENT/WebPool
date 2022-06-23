@@ -11,27 +11,19 @@
       <button class="btn" @click="isEditing = !isEditing">
         <font-awesome-icon icon="fa-solid fa-pen-alt" />
       </button>
-      <button class="btn" @click="deleteTodo(id)">
+      <button class="btn" @click="deleteTodo(todo.id)">
         <font-awesome-icon icon="fa-solid fa-trash-alt" />
       </button>
     </div>
   </div>
-  <extended-card v-show="isEditing" :todo="todo" :id="todo.id" />
 </template>
 
 <script>
-import ExtendedCard from "@/components/List/Card/ExtendedCard.vue";
-
 export default {
   name: "DefaultCard",
-  components: { ExtendedCard },
   props: {
     todo: {
       type: Object,
-      required: true,
-    },
-    id: {
-      type: Number,
       required: true,
     },
   },

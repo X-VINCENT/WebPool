@@ -1,5 +1,7 @@
 export const actions = {
   deleteTodo(context, payload) {
-    context.state.todos.splice(payload, 1);
+    let id = context.state.todos.map((item) => item.id).indexOf(payload);
+
+    context.state.todos.splice(id, 1);
   },
 };

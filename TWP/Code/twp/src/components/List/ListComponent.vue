@@ -7,8 +7,8 @@
       </button>
     </div>
     <div class="card-box">
-      <div class="card" v-for="(todo, id) in filteredTodos" :key="todo.title">
-        <card :todo="todo" :id="id" />
+      <div class="card" v-for="todo in filteredTodos" :key="todo.title">
+        <card :todo="todo" />
       </div>
     </div>
   </div>
@@ -24,10 +24,12 @@ export default {
     title: {
       type: String,
       required: true,
+      default: "Title",
     },
     status: {
       type: Number,
       required: true,
+      default: 0,
     },
   },
   computed: {
