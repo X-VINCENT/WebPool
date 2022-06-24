@@ -1,8 +1,9 @@
 <template>
+  <modal-card :show="showModal" @close="showModal = false" />
   <div class="list">
     <div class="header">
       <h1>{{ title }}</h1>
-      <button>
+      <button @click="showModal = true">
         <font-awesome-icon icon="fa-solid fa-plus" />
       </button>
     </div>
@@ -16,10 +17,11 @@
 
 <script>
 import Card from "@/components/List/Card/DefaultCard.vue";
+import ModalCard from "@/components/List/Card/ModalCard.vue";
 
 export default {
   name: "ListComponent",
-  components: { Card },
+  components: { Card, ModalCard },
   props: {
     title: {
       type: String,
@@ -31,6 +33,11 @@ export default {
       required: true,
       default: 0,
     },
+  },
+  data() {
+    return {
+      showModal: false,
+    };
   },
   computed: {
     todos() {

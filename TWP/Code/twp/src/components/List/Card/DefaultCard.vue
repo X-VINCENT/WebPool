@@ -1,4 +1,7 @@
 <template>
+  <Teleport to="body">
+    <modal-card :todo="todo" :show="showModal" @close="showModal = false" />
+  </Teleport>
   <div
     class="card"
     :style="{
@@ -15,7 +18,7 @@
       <button
         class="btn"
         :style="{ color: getColorByBgColor(todo.color) }"
-        @click="deleteTodo(todo.id)"
+        @click="showModal = true"
       >
         <font-awesome-icon icon="fa-solid fa-pen-alt" />
       </button>
@@ -31,8 +34,11 @@
 </template>
 
 <script>
+import ModalCard from "@/components/List/Card/ModalCard.vue";
+
 export default {
   name: "DefaultCard",
+  components: { ModalCard },
   props: {
     todo: {
       type: Object,
@@ -41,7 +47,7 @@ export default {
   },
   data() {
     return {
-      isEditing: false,
+      showModal: false,
     };
   },
   methods: {
