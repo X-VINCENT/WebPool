@@ -11,6 +11,12 @@ import {
   faPenAlt,
   faTrashAlt,
   faPlus,
+  faAlignLeft,
+  faArrowRightFromBracket,
+  faFloppyDisk,
+  faListCheck,
+  faEllipsisVertical,
+  faPalette,
 } from "@fortawesome/free-solid-svg-icons";
 import VCalendar from "v-calendar";
 
@@ -21,6 +27,12 @@ library.add({
   faPenAlt,
   faTrashAlt,
   faPlus,
+  faAlignLeft,
+  faArrowRightFromBracket,
+  faFloppyDisk,
+  faListCheck,
+  faEllipsisVertical,
+  faPalette,
 });
 
 createApp(App)
