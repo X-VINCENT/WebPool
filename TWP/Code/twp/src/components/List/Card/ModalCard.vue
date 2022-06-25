@@ -4,10 +4,10 @@
       <div
         class="modal-mask"
         :style="{
-          background: todo.color,
+          background: task.color,
         }"
       >
-        <h1 :style="{ color: getColorByBgColor(todo.color) }">
+        <h1 :style="{ color: getColorByBgColor(task.color) }">
           <font-awesome-icon
             icon="fa-solid fa-list-check"
             :style="{
@@ -17,22 +17,21 @@
           />
           Task
         </h1>
-        <form>
+        <form @submit.prevent="addTask(task.id)">
           <div class="title">
-            <label :style="{ color: getColorByBgColor(todo.color) }">
+            <label :style="{ color: getColorByBgColor(task.color) }">
               Title
             </label>
             <input
               type="text"
               placeholder="Add a title..."
-              :style="{ color: black }"
-              :value="todo.title"
+              :value="task.title"
               @input="value = $event.target.value"
               required
             />
           </div>
           <div class="description">
-            <label :style="{ color: getColorByBgColor(todo.color) }">
+            <label :style="{ color: getColorByBgColor(task.color) }">
               <font-awesome-icon
                 icon="fa-solid fa-align-left"
                 :style="{
@@ -44,14 +43,13 @@
             </label>
             <textarea
               placeholder="Add a description..."
-              :style="{ color: black }"
-              :value="todo.description"
+              :value="task.description"
               @input="value = $event.target.value"
               required
             />
           </div>
-          <div class="status" :style="{ color: getColorByBgColor(todo.color) }">
-            <label :style="{ color: getColorByBgColor(todo.color) }">
+          <div class="status" :style="{ color: getColorByBgColor(task.color) }">
+            <label :style="{ color: getColorByBgColor(task.color) }">
               <font-awesome-icon
                 icon="fa-solid fa-ellipsis-vertical"
                 :style="{ margin: 15 }"
@@ -59,26 +57,26 @@
             </label>
             <select required>
               <option disabled>Select a status</option>
-              <option :selected="checkSelectedStatus(todo.status, 0)">
+              <option :selected="checkSelectedStatus(task.status, 0)">
                 Todo
               </option>
-              <option :selected="checkSelectedStatus(todo.status, 1)">
+              <option :selected="checkSelectedStatus(task.status, 1)">
                 In progress
               </option>
-              <option :selected="checkSelectedStatus(todo.status, 2)">
+              <option :selected="checkSelectedStatus(task.status, 2)">
                 Done
               </option>
             </select>
           </div>
           <div class="color">
-            <label :style="{ color: getColorByBgColor(todo.color) }">
+            <label :style="{ color: getColorByBgColor(task.color) }">
               <font-awesome-icon icon="fa-solid fa-palette" />
             </label>
             <input
               type="color"
-              :value="todo.color"
+              id="color-picker"
+              :value="task.color"
               @value="value = $event.target.value"
-              placeholder="Hello"
               required
             />
           </div>
@@ -86,7 +84,8 @@
             <slot name="footer">
               <button
                 class="btn btn-exit"
-                :style="{ color: getColorByBgColor(todo.color) }"
+                type="button"
+                :style="{ color: getColorByBgColor(task.color) }"
                 @click="$emit('close')"
               >
                 <font-awesome-icon
@@ -96,8 +95,7 @@
               <button
                 class="btn btn-save"
                 type="submit"
-                :style="{ color: getColorByBgColor(todo.color) }"
-                @click="$emit('close')"
+                :style="{ color: getColorByBgColor(task.color) }"
               >
                 <font-awesome-icon icon="fa-solid fa-floppy-disk" />
               </button>
@@ -113,15 +111,16 @@
 export default {
   name: "modalCard",
   props: {
-    todo: {
+    task: {
       type: Object,
       required: false,
       default() {
         return {
+          id: "-1",
           title: "",
           description: "",
           status: "undefined",
-          color: "#fff",
+          color: "#ffffff",
         };
       },
     },
@@ -130,18 +129,44 @@ export default {
       required: true,
     },
   },
+  emits: { close },
   methods: {
     getColorByBgColor(bgColor) {
       if (!bgColor) {
-        return "";
+        return "#ffffff";
       }
       return parseInt(bgColor.replace("#", ""), 16) > 0xffffff / 2
         ? "#000000"
         : "#ffffff";
     },
-    checkSelectedStatus(todoStatus, optionStatus) {
-      if (todoStatus == optionStatus) return true;
+    checkSelectedStatus(taskStatus, optionStatus) {
+      if (taskStatus == optionStatus) return true;
       return false;
+    },
+    addTask(id) {
+      let task = {
+        id: id,
+        title: this.title,
+        description: this.description,
+        status: this.status,
+        color: this.color,
+      };
+
+      console.table(task);
+      if (
+        id != "" &&
+        this.title != "" &&
+        this.description != "" &&
+        this.status != "" &&
+        this.color != ""
+      )
+        this.$store.dispatch("addTask", task);
+      this.$emit("close");
+
+      this.title = "";
+      this.description = "";
+      this.status = "";
+      this.color = "";
     },
   },
 };
@@ -175,6 +200,9 @@ export default {
   border-radius: 40px;
 
   transition: opacity 0.3s ease;
+
+  animation-duration: 2s;
+  animation-name: animate;
 
   h1 {
     padding: 0;
@@ -226,6 +254,7 @@ form {
       line-height: 3;
 
       &::placeholder {
+        color: #323232;
         font-size: 12px;
       }
 
@@ -252,6 +281,7 @@ form {
       background: #5c6664;
 
       &::placeholder {
+        color: #323232;
         font-size: 12px;
       }
 
@@ -354,6 +384,17 @@ form {
   .modal-mask {
     left: calc(50% - (80% / 2) - 25px);
     max-width: 80%;
+  }
+}
+
+@keyframes animate {
+  0% {
+    opacity: 0;
+    transform: translate(0, -50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
   }
 }
 </style>

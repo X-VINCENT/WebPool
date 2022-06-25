@@ -4,11 +4,11 @@ import { mutations } from "./mutations";
 import { actions } from "./actions";
 import { modules } from "./modules";
 
-const todos = require("./data/todos.json");
+const tasks = require("./data/tasks.json");
 
 export default createStore({
   state: {
-    todos: todos,
+    tasks: tasks,
   },
   getters: getters,
   mutations: mutations,

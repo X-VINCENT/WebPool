@@ -8,8 +8,8 @@
       </button>
     </div>
     <div class="card-box">
-      <div class="card" v-for="todo in filteredTodos" :key="todo.title">
-        <card :todo="todo" />
+      <div class="card" v-for="task in filteredtasks" :key="task.title">
+        <card :task="task" />
       </div>
     </div>
   </div>
@@ -40,12 +40,12 @@ export default {
     };
   },
   computed: {
-    todos() {
-      return this.$store.state.todos;
+    tasks() {
+      return this.$store.state.tasks;
     },
-    filteredTodos() {
-      return this.$store.state.todos.filter(
-        (todo) => todo.status == this.$props.status
+    filteredtasks() {
+      return this.$store.state.tasks.filter(
+        (task) => task.status == this.$props.status
       );
     },
   },

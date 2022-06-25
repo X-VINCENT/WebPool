@@ -99,7 +99,7 @@ nav {
       }
 
       &:hover {
-        color: black;
+        color: #000000;
 
         &:before {
           background: linear-gradient(to bottom, #e8edec, #d2d1d3);

@@ -1,31 +1,31 @@
 <template>
   <Teleport to="body">
-    <modal-card :todo="todo" :show="showModal" @close="showModal = false" />
+    <modal-card :task="task" :show="showModal" @close="showModal = false" />
   </Teleport>
   <div
     class="card"
     :style="{
-      background: todo.color,
+      background: task.color,
     }"
   >
-    <h1 :style="{ color: getColorByBgColor(todo.color) }">
-      {{ todo.title }}
+    <h1 :style="{ color: getColorByBgColor(task.color) }">
+      {{ task.title }}
     </h1>
-    <p :style="{ color: getColorByBgColor(todo.color) }">
-      {{ todo.description }}
+    <p :style="{ color: getColorByBgColor(task.color) }">
+      {{ task.description }}
     </p>
     <div class="btn-container">
       <button
         class="btn"
-        :style="{ color: getColorByBgColor(todo.color) }"
+        :style="{ color: getColorByBgColor(task.color) }"
         @click="showModal = true"
       >
         <font-awesome-icon icon="fa-solid fa-pen-alt" />
       </button>
       <button
         class="btn"
-        :style="{ color: getColorByBgColor(todo.color) }"
-        @click="deleteTodo(todo.id)"
+        :style="{ color: getColorByBgColor(task.color) }"
+        @click="deleteTask(task.id)"
       >
         <font-awesome-icon icon="fa-solid fa-trash-alt" />
       </button>
@@ -40,7 +40,7 @@ export default {
   name: "DefaultCard",
   components: { ModalCard },
   props: {
-    todo: {
+    task: {
       type: Object,
       required: true,
     },
@@ -59,8 +59,8 @@ export default {
         ? "#000000"
         : "#ffffff";
     },
-    deleteTodo(id) {
-      this.$store.dispatch("deleteTodo", id);
+    deleteTask(id) {
+      this.$store.dispatch("deleteTask", id);
     },
   },
 };

@@ -1,7 +1,12 @@
 export const actions = {
-  deleteTodo(context, payload) {
-    let id = context.state.todos.map((item) => item.id).indexOf(payload);
+  addTask(context, payload) {
+    let id = context.state.tasks.map((item) => item.id).indexOf(payload);
 
-    context.state.todos.splice(id, 1);
+    console.log(id);
+  },
+  deleteTask(context, payload) {
+    let id = context.state.tasks.map((item) => item.id).indexOf(payload);
+
+    context.state.tasks.splice(id, 1);
   },
 };
