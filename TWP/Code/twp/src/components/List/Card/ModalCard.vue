@@ -119,10 +119,10 @@ export default {
       required: false,
       default() {
         return {
-          id: "-1",
+          id: -1,
           title: "",
           description: "",
-          status: "undefined",
+          status: 0,
           color: "#ffffff",
         };
       },
@@ -155,15 +155,11 @@ export default {
         color: this.$refs.color.value,
       };
 
-      console.table(task);
-      if (
-        id != "" &&
-        this.title != "" &&
-        this.description != "" &&
-        this.status != "" &&
-        this.color != ""
-      )
-        this.$store.dispatch("addTask", task);
+      if (task.status == "Todo") task.status = 0;
+      if (task.status == "In progress") task.status = 1;
+      if (task.status == "Done") task.status = 2;
+
+      this.$store.dispatch("addTask", task);
       this.$emit("close");
 
       this.title = "";
