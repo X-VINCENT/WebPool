@@ -27,6 +27,7 @@
               placeholder="Add a title..."
               :value="task.title"
               @input="value = $event.target.value"
+              ref="title"
               required
             />
           </div>
@@ -45,6 +46,7 @@
               placeholder="Add a description..."
               :value="task.description"
               @input="value = $event.target.value"
+              ref="description"
               required
             />
           </div>
@@ -55,7 +57,7 @@
                 :style="{ margin: 15 }"
               />
             </label>
-            <select required>
+            <select required ref="status">
               <option disabled>Select a status</option>
               <option :selected="checkSelectedStatus(task.status, 0)">
                 Todo
@@ -77,6 +79,7 @@
               id="color-picker"
               :value="task.color"
               @value="value = $event.target.value"
+              ref="color"
               required
             />
           </div>
@@ -146,10 +149,10 @@ export default {
     addTask(id) {
       let task = {
         id: id,
-        title: this.title,
-        description: this.description,
-        status: this.status,
-        color: this.color,
+        title: this.$refs.title.value,
+        description: this.$refs.description.value,
+        status: this.$refs.status.value,
+        color: this.$refs.color.value,
       };
 
       console.table(task);
