@@ -1,1 +1,1 @@
-The goal of this project is to using a Vue.js app with the WordPress API.
+TodoApp Project using Vue.js and Node.js.
