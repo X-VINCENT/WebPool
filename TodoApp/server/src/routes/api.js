@@ -1,24 +1,20 @@
 const Router = require('express').Router
+const taskController = require('../controllers/task.controller')
 
 module.exports = () => {
   const api = new Router()
 
-  api.get('/', async (req, res) => {
-    console.log('Get')
-    res.send('Welcome to the API.')
-  })
+  api.get('/tasks', taskController.findAll)
 
-  api.post('/', async (req, res) => {
-    console.log('Post')
-  })
+  api.get('/tasks/status/:status', taskController.findByStatus)
 
-  api.put('/', async (req, res) => {
-    console.log('Put')
-  })
+  api.get('/tasks/id/:id', taskController.findById)
 
-  api.delete('/', async (req, res) => {
-    console.log('Delete')
-  })
+  api.post('/tasks', taskController.create)
+
+  api.put('/tasks/id/:id', taskController.update)
+
+  api.delete('/tasks/id/:id', taskController.delete)
 
   return api
 }
