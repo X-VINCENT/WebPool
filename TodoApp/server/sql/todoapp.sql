@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS `todoapp`;
-CREATE DATABASE `todoapp`;
-USE `todoapp`;
+DROP DATABASE IF EXISTS `todoapp_db`;
+CREATE DATABASE `todoapp_db`;
+USE `todoapp_db`;
 
 DROP TABLE IF EXISTS `tasks`;
 CREATE TABLE `tasks` (
