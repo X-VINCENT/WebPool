@@ -1,21 +1,24 @@
 <template>
-  <modal-card :show="showModal" @close="showModal = false" />
-  <div class="list">
-    <div class="header">
-      <h1>{{ title }}</h1>
-      <button @click="showModal = true">
-        <font-awesome-icon icon="fa-solid fa-plus" />
-      </button>
-    </div>
-    <div class="card-box">
-      <div class="card" v-for="task in filteredtasks" :key="task.title">
-        <card :task="task" />
+  <div>
+    <modal-card :show="showModal" @close="showModal = false" />
+    <div class="list">
+      <div class="header">
+        <h1>{{ title }}</h1>
+        <button @click="showModal = true">
+          <font-awesome-icon icon="fa-solid fa-plus" />
+        </button>
+      </div>
+      <div class="card-box">
+        <div class="card" v-for="task in filteredTasks" :key="task.title">
+          <card :task="task" />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { HTTP } from "@/http-common.js";
 import Card from "@/components/List/Card/DefaultCard.vue";
 import ModalCard from "@/components/List/Card/ModalCard.vue";
 
@@ -37,17 +40,21 @@ export default {
   data() {
     return {
       showModal: false,
+      filteredTasks: [],
+      errors: [],
     };
   },
-  computed: {
-    tasks() {
-      return this.$store.state.tasks;
-    },
-    filteredtasks() {
-      return this.$store.state.tasks.filter(
-        (task) => task.status == this.$props.status
-      );
-    },
+  async created() {
+    var path = "/tasks/status/";
+    path = path.concat(this.$props.status);
+    try {
+      const response = await HTTP.get(path);
+      this.filteredTasks = response.data;
+      console.log(response.data);
+    } catch (errors) {
+      console.log(errors);
+      this.errors.push(errors);
+    }
   },
 };
 </script>

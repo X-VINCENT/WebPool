@@ -248,7 +248,7 @@ form {
       padding: 0.5em;
       border-radius: 5px;
       font-size: 14px;
-      background: #5c6664;
+      background: #f0f0f0;
       border: none;
       line-height: 3;
 
@@ -271,13 +271,14 @@ form {
       width: 100%;
       height: 200px;
       padding: 0.5em;
-      max-height: 400px;
+      min-height: 18px;
+      max-height: 286px;
       resize: vertical;
       border-radius: 5px;
-      overflow: hidden;
+      overflow: visible;
       border: none;
       font-size: 14px;
-      background: #5c6664;
+      background: #f0f0f0;
 
       &::placeholder {
         color: #323232;
@@ -296,7 +297,7 @@ form {
     width: 20em;
     height: 3em;
     line-height: 3;
-    background: #5c6664;
+    background: #f0f0f0;
     overflow: hidden;
     border-radius: 0.25em;
     width: 102%;
@@ -326,7 +327,7 @@ form {
       outline: 0;
       box-shadow: none;
       border: 0 !important;
-      background: #5c6664;
+      background: #f0f0f0;
       background-image: none;
       flex: 1;
       padding: 0 0.5em;
@@ -355,7 +356,7 @@ form {
       -webkit-appearance: none;
       width: 102%;
       height: 48px;
-      background-color: #5c6664;
+      background-color: #f0f0f0;
       border: 2px solid black;
       border-radius: 5px;
       padding: 0;
