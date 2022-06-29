@@ -50,7 +50,6 @@ export default {
     try {
       const response = await HTTP.get(path);
       this.filteredTasks = response.data;
-      console.log(response.data);
     } catch (errors) {
       console.log(errors);
       this.errors.push(errors);

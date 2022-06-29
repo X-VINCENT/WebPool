@@ -34,6 +34,7 @@
 </template>
 
 <script>
+import { HTTP } from "@/http-common.js";
 import ModalCard from "@/components/List/Card/ModalCard.vue";
 
 export default {
@@ -59,8 +60,16 @@ export default {
         ? "#000000"
         : "#ffffff";
     },
-    deleteTask(id) {
-      this.$store.dispatch("deleteTask", id);
+    async deleteTask(id) {
+      var path = "/tasks/id/";
+      path = path.concat(id);
+      try {
+        await HTTP.delete(path);
+      } catch (errors) {
+        console.log(errors);
+        this.errors.push(errors);
+      }
+      this.$router.go();
     },
   },
 };
