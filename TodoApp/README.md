@@ -1,7 +1,7 @@
 <h1 align="center">TodoApp</h1>
 
 <div align="center">
-  <img src="https://github.com/X-VINCENT/WebPool/TodoApp/assets/icon.png" width="400px" alt="icon">
+  <img src="https://github.com/X-VINCENT/WebPool/blob/main/TodoApp/assets/icon.png" width="400px" alt="icon">
 </div>
 
 ## :beginner: Introduction
