@@ -87,6 +87,16 @@ If you think the is something missing on the app, create an issue.
 
 
 ##  :camera: Gallery
+<div align="center">
+  <img src="https://github.com/X-VINCENT/WebPool/blob/main/TodoApp/assets/full_screen.png" alt="icon">
+</div>
+<div align="center">
+  <img src="https://github.com/X-VINCENT/WebPool/blob/main/TodoApp/assets/short.png" alt="icon">
+</div>
+<div align="left">
+  <img src="https://github.com/X-VINCENT/WebPool/blob/main/TodoApp/assets/create_task.png" width="49.5%" alt="icon">
+  <img src="https://github.com/X-VINCENT/WebPool/blob/main/TodoApp/assets/edit_task.png" width="49.5%" alt="icon">
+</div>
 
 ## :star2: Credit/Acknowledgment
 <a href="https://github.com/X-VINCENT">@X-VINCENT</a>
