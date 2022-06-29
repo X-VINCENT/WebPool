@@ -111,6 +111,8 @@
 </template>
 
 <script>
+import { HTTP } from "@/http-common.js";
+
 export default {
   name: "modalCard",
   props: {
@@ -146,7 +148,8 @@ export default {
       if (taskStatus == optionStatus) return true;
       return false;
     },
-    addTask(id) {
+    async addTask(id) {
+      var path = "/tasks";
       let task = {
         id: id,
         title: this.$refs.title.value,
@@ -159,13 +162,40 @@ export default {
       if (task.status == "In progress") task.status = 1;
       if (task.status == "Done") task.status = 2;
 
-      this.$store.dispatch("addTask", task);
-      this.$emit("close");
+      if (id == -1) {
+        const response = HTTP.get("/tasks");
+        id = response.length;
 
-      this.title = "";
-      this.description = "";
-      this.status = "";
-      this.color = "";
+        try {
+          await HTTP.post(path, {
+            id: id,
+            title: task.title,
+            description: task.description,
+            status: task.status,
+            color: task.color,
+          });
+        } catch (errors) {
+          console.log(errors);
+          this.errors.push(errors);
+        }
+      } else {
+        path = path.concat("/id/", id);
+
+        try {
+          await HTTP.put(path, {
+            id: id,
+            title: task.title,
+            description: task.description,
+            status: task.status,
+            color: task.color,
+          });
+        } catch (errors) {
+          console.log(errors);
+          this.errors.push(errors);
+        }
+      }
+      this.$emit("close");
+      this.$router.go();
     },
   },
 };
